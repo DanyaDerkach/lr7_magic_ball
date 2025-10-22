@@ -58,6 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!question) {
             ballText.textContent = '❗ Введіть запитання!';
             return;
+        } else if (!question.endsWith('?')) {
+            ballText.textContent = 'Це не схоже на запитання ❗';
+            return;
         }
 
         const answers = ['Так ✅', 'Ні ❌', 'Можливо 🤔'];
@@ -70,5 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
             ballText.textContent = randomAnswer;
             ballText.style.opacity = '1';
         }, 700);
+    });
+    input.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            ball.click();
+        }
     });
 });
